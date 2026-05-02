@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { productAPI } from '../services/api';
 
 export default function Admin() {
@@ -108,6 +108,15 @@ export default function Admin() {
             </svg>
             Add Product
           </button>
+          <Link
+            to="/products/new"
+            className="bg-blue-500/10 text-blue-600 dark:text-blue-300 px-6 py-2 rounded-xl font-bold hover:bg-blue-500 hover:text-white transition-all border border-blue-200 dark:border-blue-900/30 flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
+            </svg>
+            New Product Page
+          </Link>
           <button
             onClick={handleLogout}
             className="bg-red-500/10 text-red-600 dark:text-red-400 px-6 py-2 rounded-xl font-bold hover:bg-red-500 hover:text-white transition-all border border-red-200 dark:border-red-900/30 flex items-center gap-2"

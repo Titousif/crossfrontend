@@ -9,6 +9,7 @@ import Register from './pages/Register';
 import ProductDetails from './pages/ProductDetails';
 import Wishlist from './pages/Wishlist';
 import Admin from './pages/Admin';
+import NewProduct from './pages/NewProduct';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -25,6 +26,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/products/new" element={<NewProduct />} />
         </Routes>
       </main>
       <Footer />
