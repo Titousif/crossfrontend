@@ -16,7 +16,7 @@ export default function Admin() {
   });
 
   useEffect(() => {
-    // Simple admin check - in production, use proper authentication
+    // Check if user is logged in (any user can access admin for now)
     const token = localStorage.getItem('token');
     if (!token) {
       navigate('/login');
