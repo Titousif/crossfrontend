@@ -21,6 +21,11 @@ const Login = () => {
       // Store user info
       localStorage.setItem('user', JSON.stringify(data.user));
       
+      // Check if admin (simple check - in production use proper role system)
+      if (email === 'admin@admin.com' || data.user?.isAdmin) {
+        localStorage.setItem('isAdmin', 'true');
+      }
+      
       // Redirect to home page
       navigate('/');
       window.location.reload(); // Refresh to update auth state
