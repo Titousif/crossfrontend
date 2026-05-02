@@ -22,7 +22,7 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(data.user));
       
       // Check if admin (simple check - in production use proper role system)
-      if (email === 'admin@admin.com' || data.user?.isAdmin) {
+      if (data.user?.role === 'admin') {
         localStorage.setItem('isAdmin', 'true');
       }
       
