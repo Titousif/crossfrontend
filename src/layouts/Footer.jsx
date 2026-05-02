@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white py-12 mt-auto border-t dark:border-gray-800 transition-colors duration-300">
@@ -11,10 +13,10 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-lg mb-6 dark:text-white uppercase tracking-wider text-xs">Quick Navigation</h3>
           <ul className="text-gray-500 dark:text-gray-400 text-sm space-y-3">
-            <li className="hover:text-indigo-600 dark:hover:text-violet-400 transition cursor-pointer">Explore Products</li>
-            <li className="hover:text-indigo-600 dark:hover:text-violet-400 transition cursor-pointer">My Wishlist</li>
-            <li className="hover:text-indigo-600 dark:hover:text-violet-400 transition cursor-pointer">Shopping Cart</li>
-            <li className="hover:text-indigo-600 dark:hover:text-violet-400 transition cursor-pointer">Admin Dashboard</li>
+            <li><Link to="/" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Explore Products</Link></li>
+            <li><Link to="/wishlist" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">My Wishlist</Link></li>
+            <li><Link to="/cart" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Shopping Cart</Link></li>
+            <li><Link to="/login" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Admin Dashboard</Link></li>
           </ul>
         </div>
         <div>
