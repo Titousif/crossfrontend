@@ -69,7 +69,7 @@ const Home = () => {
           className={`px-4 py-2 rounded ${
             selectedCategory === 'electronics' 
               ? 'bg-blue-500 text-white' 
-              : 'bg-gray-200 text-gray-700'
+              : 'bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-200'
           }`}
         >
           Electronics
@@ -79,7 +79,7 @@ const Home = () => {
           className={`px-4 py-2 rounded ${
             selectedCategory === 'clothing' 
               ? 'bg-blue-500 text-white' 
-              : 'bg-gray-200 text-gray-700'
+              : 'bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-200'
           }`}
         >
           Clothing
@@ -89,7 +89,7 @@ const Home = () => {
           className={`px-4 py-2 rounded ${
             selectedCategory === 'books' 
               ? 'bg-blue-500 text-white' 
-              : 'bg-gray-200 text-gray-700'
+              : 'bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-200'
           }`}
         >
           Books
@@ -99,7 +99,7 @@ const Home = () => {
           className={`px-4 py-2 rounded ${
             selectedCategory === 'furniture' 
               ? 'bg-blue-500 text-white' 
-              : 'bg-gray-200 text-gray-700'
+              : 'bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-200'
           }`}
         >
           Furniture
@@ -174,7 +174,7 @@ const Home = () => {
                   className={`px-4 py-2 rounded ${
                     currentPage === page + 1
                       ? 'bg-blue-500 text-white'
-                      : 'bg-gray-200'
+                      : 'bg-gray-200 text-gray-700 dark:bg-slate-800 dark:text-gray-200'
                   }`}
                 >
                   {page + 1}
@@ -184,7 +184,7 @@ const Home = () => {
               <button
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                className="px-4 py-2 bg-gray-200 rounded text-gray-700 dark:bg-slate-800 dark:text-gray-200 disabled:opacity-50"
               >
                 Next
               </button>
