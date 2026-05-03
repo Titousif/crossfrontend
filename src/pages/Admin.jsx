@@ -7,6 +7,7 @@ export default function Admin() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
   const [newProduct, setNewProduct] = useState({
     title: '',
     price: '',
@@ -50,6 +51,36 @@ export default function Admin() {
       } catch (error) {
         alert('Failed to delete product');
       }
+    }
+  };
+
+  const handleEditProduct = (product) => {
+    setEditingProduct({
+      ...product,
+      price: product.price.toString(),
+      stock: product.stock.toString()
+    });
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingProduct) return;
+    try {
+      const updateData = {
+        title: editingProduct.title,
+        price: parseFloat(editingProduct.price),
+        description: editingProduct.description,
+        category: editingProduct.category,
+        image: editingProduct.image,
+        stock: parseInt(editingProduct.stock) || 0
+      };
+      
+      await productAPI.update(editingProduct.id, updateData);
+      alert('Product updated successfully!');
+      setEditingProduct(null);
+      loadProducts();
+    } catch (error) {
+      console.error('Error updating product:', error);
+      alert('Failed to update product: ' + error.message);
     }
   };
 
@@ -241,7 +272,109 @@ export default function Admin() {
         </div>
       )}
 
-      <div className="bg-white dark:bg-gray-900 shadow-xl rounded-2xl overflow-hidden border dark:border-gray-700">
+      {/* Edit Product Modal */}
+      {editingProduct && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#10101a] rounded-3xl p-6 max-w-2xl w-full mx-4 border border-[#2d2c44] max-h-[90vh] overflow-y-auto">
+            <h2 className="text-2xl font-bold text-amber-300 mb-6">Edit Product</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Product Title
+                </label>
+                <input
+                  type="text"
+                  value={editingProduct.title}
+                  onChange={(e) => setEditingProduct({...editingProduct, title: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Price
+                </label>
+                <input
+                  type="number"
+                  step="0.01"
+                  value={editingProduct.price}
+                  onChange={(e) => setEditingProduct({...editingProduct, price: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Stock
+                </label>
+                <input
+                  type="number"
+                  value={editingProduct.stock}
+                  onChange={(e) => setEditingProduct({...editingProduct, stock: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Category
+                </label>
+                <select
+                  value={editingProduct.category}
+                  onChange={(e) => setEditingProduct({...editingProduct, category: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                >
+                  <option value="">Select a category</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="clothing">Clothing</option>
+                  <option value="books">Books</option>
+                  <option value="furniture">Furniture</option>
+                  <option value="general">General</option>
+                </select>
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Image URL
+                </label>
+                <input
+                  type="url"
+                  value={editingProduct.image}
+                  onChange={(e) => setEditingProduct({...editingProduct, image: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                />
+              </div>
+
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Description
+                </label>
+                <textarea
+                  value={editingProduct.description}
+                  onChange={(e) => setEditingProduct({...editingProduct, description: e.target.value})}
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white"
+                  rows="3"
+                />
+              </div>
+
+              <div className="md:col-span-2 flex gap-4">
+                <button
+                  onClick={handleSaveEdit}
+                  className="bg-amber-300 text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-amber-400 transition"
+                >
+                  Save Changes
+                </button>
+                <button
+                  onClick={() => setEditingProduct(null)}
+                  className="bg-[#2d2c44] text-gray-200 px-6 py-2 rounded-full font-bold hover:bg-[#41405e] transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
         <div className="overflow-x-auto">
           <table className="w-full text-left min-w-[800px]">
             <thead className="bg-indigo-600 text-white">
@@ -268,7 +401,10 @@ export default function Admin() {
                   <td className="p-5 font-bold text-indigo-600 dark:text-violet-400">${p.price}</td>
                   <td className="p-5">
                     <div className="flex gap-3 justify-center">
-                      <button className="bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 px-4 py-2 rounded-lg text-xs font-bold hover:bg-indigo-600 hover:text-white transition">
+                      <button
+                        onClick={() => handleEditProduct(p)}
+                        className="bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 px-4 py-2 rounded-lg text-xs font-bold hover:bg-indigo-600 hover:text-white transition"
+                      >
                         Edit
                       </button>
                       <button

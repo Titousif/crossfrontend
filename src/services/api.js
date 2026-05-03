@@ -89,6 +89,13 @@ export const productAPI = {
       body: JSON.stringify(productData),
     });
   },
+  
+  update: async (id, productData) => {
+    return request(`/products/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(productData),
+    });
+  },
 };
 
 // Orders API
