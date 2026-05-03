@@ -9,7 +9,8 @@ export default function NewProduct() {
     price: '',
     description: '',
     category: '',
-    image: ''
+    image: '',
+    stock: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,7 +28,8 @@ export default function NewProduct() {
     try {
       await productAPI.create({
         ...product,
-        price: Number(product.price)
+        price: Number(product.price),
+        stock: parseInt(product.stock) || 0
       });
       navigate('/admin');
     } catch (err) {
@@ -74,7 +76,17 @@ export default function NewProduct() {
             className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </label>
-
+        <label className="block">
+          <span className="text-gray-700 dark:text-gray-300">Stock *</span>
+          <input
+            name="stock"
+            type="number"
+            value={product.stock}
+            onChange={handleChange}
+            required
+            className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </label>
         <label className="block">
           <span className="text-gray-700 dark:text-gray-300">Category</span>
           <select

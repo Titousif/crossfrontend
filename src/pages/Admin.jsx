@@ -12,7 +12,8 @@ export default function Admin() {
     price: '',
     description: '',
     category: '',
-    image: ''
+    image: '',
+    stock: ''
   });
 
   useEffect(() => {
@@ -57,7 +58,8 @@ export default function Admin() {
     try {
       const productData = {
         ...newProduct,
-        price: parseFloat(newProduct.price)
+        price: parseFloat(newProduct.price),
+        stock: parseInt(newProduct.stock) || 0
       };
 
       await productAPI.create(productData);
@@ -67,7 +69,8 @@ export default function Admin() {
         price: '',
         description: '',
         category: '',
-        image: ''
+        image: '',
+        stock: ''
       });
       setShowAddForm(false);
       loadProducts(); // Reload products
@@ -158,6 +161,20 @@ export default function Admin() {
                 onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
                 placeholder="0.00"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Stock *
+              </label>
+              <input
+                type="number"
+                required
+                value={newProduct.stock}
+                onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
+                placeholder="0"
               />
             </div>
 
