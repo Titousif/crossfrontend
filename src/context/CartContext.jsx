@@ -6,13 +6,13 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
     // Load from localStorage on initialization
-    const savedCart = localStorage.getItem('ross_cart');
+    const savedCart = localStorage.getItem('cross_cart');
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
   // Sync with localStorage on change
   useEffect(() => {
-    localStorage.setItem('ross_cart', JSON.stringify(cart));
+    localStorage.setItem('cross_cart', JSON.stringify(cart));
   }, [cart]);
 
   // Function to add a product to the cart

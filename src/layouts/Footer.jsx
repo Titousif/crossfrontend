@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-[#07070d] text-gray-300 py-12 mt-auto border-t border-[#2a2a3a] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
         <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold text-amber-300 uppercase tracking-[0.2em]">ross</h2>
+          <h2 className="text-3xl font-bold text-amber-300 uppercase tracking-[0.2em]">cross</h2>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
             A luxurious shopping experience with premium design and elegant selection.
           </p>
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-gray-100 dark:border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs px-4">
-        © 2026 ross - Built for croos Mini Project. All rights reserved.
+        © 2026 cross - Built for cross Mini Project. All rights reserved.
       </div>
     </footer>
   );

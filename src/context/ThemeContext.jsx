@@ -4,7 +4,7 @@ export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem('ross_theme');
+    const savedTheme = localStorage.getItem('cross_theme');
     return savedTheme === 'dark';
   });
 
@@ -12,11 +12,11 @@ export function ThemeProvider({ children }) {
     if (darkMode) {
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
-      localStorage.setItem('ross_theme', 'dark');
+      localStorage.setItem('cross_theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
       document.body.classList.remove('dark');
-      localStorage.setItem('ross_theme', 'light');
+      localStorage.setItem('cross_theme', 'light');
     }
   }, [darkMode]);
 

@@ -14,8 +14,8 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
     <nav className="flex flex-col md:flex-row justify-between items-center p-4 bg-gradient-to-r from-[#08080f] via-[#111118] to-[#0f0e17] shadow-[0_20px_60px_rgba(0,0,0,0.35)] sticky top-0 z-50 transition-colors duration-300 border-b border-gray-800">
       <div className="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
         <Link to="/" className="flex items-center gap-3 text-2xl font-extrabold tracking-wide text-amber-300 uppercase">
-          <img src={logo} alt="ross Logo" className="w-10 h-10 rounded-full object-cover ring-2 ring-amber-300/40" />
-          <span>ross</span>
+          <img src={logo} alt="cross Logo" className="w-10 h-10 rounded-full object-cover ring-2 ring-amber-300/40" />
+          <span>cross</span>
         </Link>
         <button className="md:hidden p-2 text-gray-600 dark:text-gray-300 focus:outline-none">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>

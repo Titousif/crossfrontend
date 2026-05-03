@@ -164,7 +164,7 @@ export default function Cart() {
                   onChange={handleInputChange}
                   rows="2"
                   className={`w-full px-4 py-2 rounded-lg border dark:bg-gray-800 dark:text-white outline-none focus:ring-2 ${errors.address ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 dark:border-gray-700 focus:ring-indigo-200'}`}
-                  placeholder="123 Ross St, Oran, Algeria"
+                  placeholder="123 Cross St, Oran, Algeria"
                 />
                 {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
               </div>

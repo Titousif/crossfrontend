@@ -5,13 +5,13 @@ export const WishlistContext = createContext();
 export function WishlistProvider({ children }) {
   const [wishlist, setWishlist] = useState(() => {
     // Load from localStorage on initialization
-    const savedWishlist = localStorage.getItem('ross_wishlist');
+    const savedWishlist = localStorage.getItem('cross_wishlist');
     return savedWishlist ? JSON.parse(savedWishlist) : [];
   });
 
   // Sync with localStorage on change
   useEffect(() => {
-    localStorage.setItem('ross_wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('cross_wishlist', JSON.stringify(wishlist));
   }, [wishlist]);
 
   const toggleWishlist = (product) => {
