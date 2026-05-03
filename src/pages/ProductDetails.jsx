@@ -1,23 +1,27 @@
-import { useState, useEffect, useContext } from 'react'; 
-import { useParams, Link } from 'react-router-dom'; 
-import { CartContext } from '../context/CartContext'; 
-  
-export default function ProductDetails() { 
-  const { id } = useParams(); 
-  const { addToCart } = useContext(CartContext); 
-  const [product, setProduct] = useState(null); 
+import { useState, useEffect, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
+import { productAPI } from '../services/api';
+
+export default function ProductDetails() {
+  const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => { 
+  useEffect(() => {
     setLoading(true);
-    fetch(`https://api.escuelajs.co/api/v1/products/${id}`) 
-      .then(res => res.json()) 
-      .then(data => {
+    productAPI.getOne(id)
+      .then((data) => {
         setProduct(data);
-        setLoading(false);
-      }); 
-  }, [id]); 
-  
+      })
+      .catch((err) => {
+        console.error('Failed to load product details:', err);
+        setProduct(null);
+      })
+      .finally(() => setLoading(false));
+  }, [id]);
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen dark:bg-gray-950">
@@ -37,11 +41,15 @@ export default function ProductDetails() {
         </Link>
 
         <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl flex flex-col md:flex-row gap-12 border dark:border-gray-700"> 
-          <div className="w-full md:w-1/2 flex justify-center bg-white rounded-xl p-4"> 
-            <img src={product.images[0]} alt={product.title} className="max-h-[450px] object-contain hover:scale-105 transition-transform duration-500" /> 
+          <div className="w-full md:w-1/2 flex justify-center bg-white rounded-xl p-4 dark:bg-gray-900"> 
+            {product.image ? (
+              <img src={product.image} alt={product.title} className="max-h-[450px] object-contain hover:scale-105 transition-transform duration-500" />
+            ) : (
+              <div className="flex items-center justify-center h-full w-full bg-gray-100 dark:bg-gray-950 rounded-xl text-gray-500 dark:text-gray-400">No image available</div>
+            )}
           </div> 
           <div className="w-full md:w-1/2 flex flex-col justify-center"> 
-            <p className="text-indigo-600 dark:text-violet-400 font-bold uppercase tracking-widest text-sm mb-2">{product.category.name}</p>
+            <p className="text-indigo-600 dark:text-violet-400 font-bold uppercase tracking-widest text-sm mb-2">{product.category}</p>
             <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-6 leading-tight">{product.title}</h2> 
             
             <div className="flex items-center gap-4 mb-8">
@@ -62,4 +70,4 @@ export default function ProductDetails() {
       </div>
     </div> 
   ); 
-}
+}
