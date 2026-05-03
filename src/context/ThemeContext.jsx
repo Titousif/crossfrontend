@@ -11,14 +11,16 @@ export function ThemeProvider({ children }) {
   useLayoutEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
       localStorage.setItem('ross_theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
       localStorage.setItem('ross_theme', 'light');
     }
   }, [darkMode]);
 
-  const toggleTheme = () => setDarkMode(!darkMode);
+  const toggleTheme = () => setDarkMode((mode) => !mode);
 
   return (
     <ThemeContext.Provider value={{ darkMode, toggleTheme }}>

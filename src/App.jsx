@@ -15,7 +15,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white text-gray-900 dark:bg-slate-950 dark:text-gray-100 transition-colors duration-300">
       <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <main className="flex-grow">
         <Routes>
