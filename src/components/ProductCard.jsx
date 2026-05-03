@@ -7,46 +7,47 @@ const ProductCard = ({ product }) => {
   const { toggleWishlist } = useContext(WishlistContext);
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300">
-      {/* Placeholder image - you can add images later */}
-      <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
-        <span className="text-gray-400">📦 {product.category}</span>
+    <div className="bg-[#0f0f18] rounded-3xl border border-[#2f2e45] shadow-[0_20px_60px_rgba(0,0,0,0.25)] overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+      <div className="w-full h-52 bg-gradient-to-br from-[#1f1f33] to-[#0a0a10] flex items-center justify-center">
+        {product.image ? (
+          <img src={product.image} alt={product.title} className="h-full object-contain" />
+        ) : (
+          <span className="text-amber-300 text-sm uppercase tracking-[0.2em]">{product.category}</span>
+        )}
       </div>
       
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">{product.title}</h3>
-        <p className="text-gray-600 text-sm mb-2 line-clamp-2">{product.description || 'Product description'}</p>
+      <div className="p-5">
+        <h3 className="text-xl font-semibold text-gray-100 mb-3">{product.title}</h3>
+        <p className="text-gray-400 text-sm mb-4 line-clamp-2">{product.description || 'A premium item with exceptional quality.'}</p>
         
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">
+        <div className="flex flex-wrap justify-between gap-3 items-center mb-4">
+          <span className="text-sm bg-amber-500/15 text-amber-200 px-3 py-1 rounded-full border border-amber-300/20">
             {product.category}
           </span>
-          <span className="text-sm text-green-600">📦 {product.stock} left</span>
+          <span className="text-sm text-gray-300">{product.stock} in stock</span>
         </div>
         
-        <div className="flex justify-between items-center mt-3">
-          <span className="text-2xl font-bold text-blue-600">
-            ${product.price}
-          </span>
-          <div className="space-x-2">
+        <div className="flex justify-between items-center gap-3 mt-4">
+          <span className="text-2xl font-bold text-amber-300">${product.price}</span>
+          <div className="flex gap-2">
             <button
               onClick={() => addToCart(product)}
-              className="bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-600 transition"
+              className="bg-amber-300 text-[#111118] px-4 py-2 rounded-full font-semibold hover:bg-amber-400 transition"
               disabled={product.stock === 0}
             >
-              🛒 Add
+              Add
             </button>
             <button
               onClick={() => toggleWishlist(product)}
-              className="bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600 transition"
+              className="bg-white/10 text-white px-4 py-2 rounded-full hover:bg-white/20 transition"
             >
-              ❤️
+              ♥
             </button>
           </div>
         </div>
         
         {product.stock === 0 && (
-          <p className="text-red-500 text-sm mt-2">Out of Stock</p>
+          <p className="text-red-400 text-sm mt-3">Out of Stock</p>
         )}
       </div>
     </div>

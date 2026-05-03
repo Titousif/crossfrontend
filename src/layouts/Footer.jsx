@@ -2,21 +2,21 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-900 text-gray-800 dark:text-white py-12 mt-auto border-t dark:border-gray-800 transition-colors duration-300">
+    <footer className="bg-[#07070d] text-gray-300 py-12 mt-auto border-t border-[#2a2a3a] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
         <div className="flex flex-col gap-4">
-          <h2 className="text-3xl font-bold text-indigo-600 dark:text-violet-400">ross</h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed max-w-xs">
-            Premium e-commerce experience powered by the latest web technologies. Speed, security, and style.
+          <h2 className="text-3xl font-bold text-amber-300 uppercase tracking-[0.2em]">ross</h2>
+          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+            A luxurious shopping experience with premium design and elegant selection.
           </p>
         </div>
         <div>
-          <h3 className="font-bold text-lg mb-6 dark:text-white uppercase tracking-wider text-xs">Quick Navigation</h3>
-          <ul className="text-gray-500 dark:text-gray-400 text-sm space-y-3">
-            <li><Link to="/" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Explore Products</Link></li>
-            <li><Link to="/wishlist" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">My Wishlist</Link></li>
-            <li><Link to="/cart" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Shopping Cart</Link></li>
-            <li><Link to="/login" className="hover:text-indigo-600 dark:hover:text-violet-400 transition">Admin Dashboard</Link></li>
+          <h3 className="font-bold text-lg mb-6 text-amber-200 uppercase tracking-wider text-xs">Quick Navigation</h3>
+          <ul className="text-gray-400 text-sm space-y-3">
+            <li><Link to="/" className="hover:text-amber-300 transition">Explore Products</Link></li>
+            <li><Link to="/wishlist" className="hover:text-amber-300 transition">My Wishlist</Link></li>
+            <li><Link to="/cart" className="hover:text-amber-300 transition">Shopping Cart</Link></li>
+            <li><Link to="/login" className="hover:text-amber-300 transition">Admin Dashboard</Link></li>
           </ul>
         </div>
         <div>

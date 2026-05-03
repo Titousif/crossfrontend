@@ -85,23 +85,23 @@ export default function Admin() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen bg-[#07070d] text-gray-200">
         <div className="text-xl">Loading...</div>
       </div>
     );
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto dark:bg-gray-950 min-h-screen transition-colors duration-300">
+    <div className="p-8 max-w-7xl mx-auto bg-[#07070d] min-h-screen transition-colors duration-300 text-gray-100">
       <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-4">
         <div>
-          <h1 className="text-4xl font-extrabold text-gray-800 dark:text-white">Admin Dashboard</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-2">Manage your store products and inventory.</p>
+          <h1 className="text-4xl font-extrabold text-amber-300">Admin Dashboard</h1>
+          <p className="text-gray-400 mt-2">Manage your luxury store catalog from one elegant interface.</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <button
             onClick={() => setShowAddForm(!showAddForm)}
-            className="bg-green-500/10 text-green-600 dark:text-green-400 px-6 py-2 rounded-xl font-bold hover:bg-green-500 hover:text-white transition-all border border-green-200 dark:border-green-900/30 flex items-center gap-2"
+            className="bg-gradient-to-r from-amber-400 to-yellow-300 text-gray-900 px-6 py-2 rounded-full font-bold hover:shadow-lg hover:shadow-amber-300/30 transition-all flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
@@ -129,8 +129,8 @@ export default function Admin() {
 
       {/* Add Product Form */}
       {showAddForm && (
-        <div className="bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-6 mb-8 border dark:border-gray-700">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">Add New Product</h2>
+        <div className="bg-[#10101a] shadow-[0_40px_120px_rgba(0,0,0,0.25)] rounded-3xl p-6 mb-8 border border-[#2d2c44]">
+          <h2 className="text-2xl font-bold text-amber-300 mb-6">Add New Product</h2>
           <form onSubmit={handleAddProduct} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -203,14 +203,14 @@ export default function Admin() {
             <div className="md:col-span-2 flex gap-4">
               <button
                 type="submit"
-                className="bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 transition"
+                className="bg-amber-300 text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-amber-400 transition"
               >
                 Add Product
               </button>
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="bg-gray-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-gray-600 transition"
+                className="bg-[#2d2c44] text-gray-200 px-6 py-2 rounded-full font-bold hover:bg-[#41405e] transition"
               >
                 Cancel
               </button>

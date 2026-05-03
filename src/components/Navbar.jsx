@@ -11,11 +11,11 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
   const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <nav className="flex flex-col md:flex-row justify-between items-center p-4 bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 transition-colors duration-300">
+    <nav className="flex flex-col md:flex-row justify-between items-center p-4 bg-gradient-to-r from-[#08080f] via-[#111118] to-[#0f0e17] shadow-[0_20px_60px_rgba(0,0,0,0.35)] sticky top-0 z-50 transition-colors duration-300 border-b border-gray-800">
       <div className="flex items-center justify-between w-full md:w-auto mb-4 md:mb-0">
-        <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-indigo-600 dark:text-violet-400">
-          <img src={logo} alt="cRoss Logo" className="w-10 h-10 rounded-full object-cover" />
-          <span>cross</span>
+        <Link to="/" className="flex items-center gap-3 text-2xl font-extrabold tracking-wide text-amber-300 uppercase">
+          <img src={logo} alt="ross Logo" className="w-10 h-10 rounded-full object-cover ring-2 ring-amber-300/40" />
+          <span>ross</span>
         </Link>
         <button className="md:hidden p-2 text-gray-600 dark:text-gray-300 focus:outline-none">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -29,8 +29,8 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search products..."
-            className="w-full px-4 py-2 border rounded-full bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            placeholder="Search premium products..."
+            className="w-full px-4 py-2 border rounded-full bg-[#111118] border-[#3f3d56] text-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-400"
           />
           <span className="absolute right-4 top-2.5 text-gray-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -60,7 +60,7 @@ export default function Navbar({ searchTerm, setSearchTerm }) {
 
         {/* Add Product button - only for logged in users */}
         {localStorage.getItem('token') && (
-          <Link to="/products/new" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-all shadow-md shadow-green-200 dark:shadow-none flex items-center gap-2">
+          <Link to="/products/new" className="bg-gradient-to-r from-amber-400 to-yellow-300 text-gray-900 px-4 py-2 rounded-full font-semibold shadow-lg shadow-amber-400/20 flex items-center gap-2 hover:scale-[1.02] transition-transform">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path>
             </svg>
