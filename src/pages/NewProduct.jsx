@@ -77,12 +77,19 @@ export default function NewProduct() {
 
         <label className="block">
           <span className="text-gray-700 dark:text-gray-300">Category</span>
-          <input
+          <select
             name="category"
             value={product.category}
             onChange={handleChange}
             className="mt-2 w-full rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
+          >
+            <option value="">Select a category</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+            <option value="furniture">Furniture</option>
+            <option value="general">General</option>
+          </select>
         </label>
 
         <label className="block">

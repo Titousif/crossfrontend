@@ -178,13 +178,18 @@ export default function Admin() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Category
               </label>
-              <input
-                type="text"
+              <select
                 value={newProduct.category}
                 onChange={(e) => setNewProduct({...newProduct, category: e.target.value})}
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
-                placeholder="e.g., electronics, clothing"
-              />
+              >
+                <option value="">Select a category</option>
+                <option value="electronics">Electronics</option>
+                <option value="clothing">Clothing</option>
+                <option value="books">Books</option>
+                <option value="furniture">Furniture</option>
+                <option value="general">General</option>
+              </select>
             </div>
 
             <div>
