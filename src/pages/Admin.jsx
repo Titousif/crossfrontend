@@ -57,8 +57,8 @@ export default function Admin() {
   const handleEditProduct = (product) => {
     setEditingProduct({
       ...product,
-      price: product.price.toString(),
-      stock: product.stock.toString()
+      price: product.price != null ? product.price.toString() : '',
+      stock: product.stock != null ? product.stock.toString() : '0'
     });
   };
 
@@ -402,12 +402,14 @@ export default function Admin() {
                   <td className="p-5">
                     <div className="flex gap-3 justify-center">
                       <button
+                        type="button"
                         onClick={() => handleEditProduct(p)}
                         className="bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400 px-4 py-2 rounded-lg text-xs font-bold hover:bg-indigo-600 hover:text-white transition"
                       >
                         Edit
                       </button>
                       <button
+                        type="button"
                         onClick={() => deleteProduct(p.id)}
                         className="bg-red-50 text-red-500 dark:bg-red-900/20 dark:text-red-400 px-4 py-2 rounded-lg text-xs font-bold hover:bg-red-500 hover:text-white transition"
                       >
