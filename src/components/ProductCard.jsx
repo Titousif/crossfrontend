@@ -6,14 +6,19 @@ const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
   const { toggleWishlist } = useContext(WishlistContext);
 
+  const placeholderImages = {
+    electronics: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80',
+    clothing: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80',
+    books: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80',
+    furniture: 'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=80',
+  };
+
+  const imageSrc = product.image || placeholderImages[product.category] || 'https://images.unsplash.com/photo-1555529669-2a7d7c8ca9f0?auto=format&fit=crop&w=800&q=80';
+
   return (
     <div className="bg-[#0f0f18] rounded-3xl border border-[#2f2e45] shadow-[0_20px_60px_rgba(0,0,0,0.25)] overflow-hidden hover:-translate-y-1 transition-transform duration-300">
-      <div className="w-full h-52 bg-gradient-to-br from-[#1f1f33] to-[#0a0a10] flex items-center justify-center">
-        {product.image ? (
-          <img src={product.image} alt={product.title} className="h-full object-contain" />
-        ) : (
-          <span className="text-amber-300 text-sm uppercase tracking-[0.2em]">{product.category}</span>
-        )}
+      <div className="w-full h-52 bg-gradient-to-br from-[#1f1f33] to-[#0a0a10] flex items-center justify-center overflow-hidden">
+        <img src={imageSrc} alt={product.title} className="h-full w-full object-cover" />
       </div>
       
       <div className="p-5">
